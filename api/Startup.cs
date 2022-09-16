@@ -54,7 +54,7 @@ namespace SpotifyAPI
 
             //app.UseHttpsRedirection();
 
-            app.UsePathBase(Environment.GetEnvironmentVariable("BASE_URL"));
+            // app.UsePathBase(Environment.GetEnvironmentVariable("BASE_URL"));
 
             app.UseRouting();
 

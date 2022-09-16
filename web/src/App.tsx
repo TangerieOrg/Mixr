@@ -115,7 +115,7 @@ function App() {
         style={{
             minHeight: "100vh"
         }}>
-            <Router>
+            <Router basename={process.env.REACT_APP_BASE_URL}>
 
             {/*ROUTES*/}
             <Switch>

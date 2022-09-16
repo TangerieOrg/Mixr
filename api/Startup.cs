@@ -54,6 +54,8 @@ namespace SpotifyAPI
 
             //app.UseHttpsRedirection();
 
+            app.UsePathBase(Environment.GetEnvironmentVariable("BASE_URL"));
+
             app.UseRouting();
 
             app.UseCors();

@@ -29,7 +29,7 @@ export default function Popup(props : IProps) {
             if((props.canClose == undefined || props.canClose) && props.onClose) {
                 props.onClose();
             }
-        }}>
+        }} >
         </div>
 
         <div style={{

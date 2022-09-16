@@ -149,6 +149,6 @@ export default withStore(App, {
     profile: null,
     api: {
         token: GetUserToken(),
-        url: process.env.REACT_APP_API_URL || "http://localhost:5000" /* If its set in our env change it, otherwise default to localhost:5000 */
+        url: process.env.REACT_APP_API_URL || "http://localhost:5001" /* If its set in our env change it, otherwise default to localhost:5000 */
     }
 });

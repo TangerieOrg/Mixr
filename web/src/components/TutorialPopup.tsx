@@ -72,7 +72,8 @@ export default function TutorialPopup(props : TutProps) {
         maxHeight: "95vh",
         width: "auto",
         height: "auto",
-        overflowY: "scroll",
+        overflowY: "auto",
+        scrollbarWidth: null
     }}>
         {React.cloneElement(getCurSlide())}
         <div className="w-full flex flex-row justify-between mb-5 px-8">

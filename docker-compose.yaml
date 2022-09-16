@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+    api:
+        ports:
+            - 3001:80
+        environment:
+            - SPOTIFY_CALLBACK_URL=http://media.local:3000/spotify/callback
+            - SPOTIFY_CLIENT_ID
+            - SPOTIFY_CLIENT_SECRET
+        build: ./api
+        volumes:
+            - ./api/Data:/app/Data
+
+    frontend:
+        ports:
+            - 3000:3000
+        depends_on:
+            - api
+        build: 
+            context: ./web
+            args:
+                - REACT_APP_API_URL=http://media.local:3001

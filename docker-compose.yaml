@@ -5,7 +5,7 @@ services:
         ports:
             - 3001:80
         environment:
-            - SPOTIFY_CALLBACK_URL=http://media.local:3000/spotify/callback
+            - SPOTIFY_CALLBACK_URL=http://tangerie.xyz/mixr/spotify/callback
             - SPOTIFY_CLIENT_ID
             - SPOTIFY_CLIENT_SECRET
             - BASE_URL=/mixr/api

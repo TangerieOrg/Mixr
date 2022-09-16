@@ -67,7 +67,6 @@ export default function TutorialPopup(props : TutProps) {
         AddTutorialCookie(props.tutorialKey);
         setCurSlide(-1);
     }
-    
     return <Popup condition={true} canClose={false} className="p-0 flex flex-col" style={{
         maxHeight: "95vh",
         width: "auto",

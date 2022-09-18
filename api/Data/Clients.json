@@ -1,1 +1,11 @@
-{}
+{
+  "XeTBPPsgOc9wWUKwm9LtGB4QPBfdEbqOXqOyar3W2mAYDBuvc9": {
+    "AccessToken": "BQC5RlWxMaI2KeKMgK-q8KH2A9Jtlv_kqGECaWqAvJgGHadiFNxu_CuVIIECg-yEQ9WDvzl-HY31ZHCu8qxqME9R_oihokbsZORCQaajNm7QHN73rkJQfsp9u3O4bmHimVMXeoxB_56Zs11d7fcUjW2GhqApVfECV_KlAeFbNOU1WlHoQ5AT8kGXxsdmNFAJg88wM2L91ZRGP_E3Q8oKlQaSWfPQjeR3RvxzOg1ODdZQa3iFkxS26sfX9_Ip83iLFb3gpfJZWqPAM1q1hWg9ra-fTdBQbl_ivsao3v0XmWeKFLAiwGZT_RWg0jCJqygdLQ",
+    "TokenType": "Bearer",
+    "ExpiresIn": 3600,
+    "Scope": "playlist-read-private playlist-read-collaborative ugc-image-upload user-follow-read playlist-modify-private user-read-email user-read-private app-remote-control streaming user-follow-modify user-modify-playback-state user-library-read user-library-modify playlist-modify-public user-read-playback-state user-read-currently-playing user-read-recently-played user-read-playback-position user-top-read",
+    "RefreshToken": "AQAEbC4HpuOk2eYzR64NAol-I9UUcP7fhzxArlJt2DJ5dB3-YsBEbJdVb66aZpCT84m06r2TRRHwWH5TUeqP3Ni2A1V7j3Gmi91G0qYAWHUP0UgR72Y9u-bV2HSegDlHjwM",
+    "CreatedAt": "2022-09-18T06:09:02.8866343Z",
+    "IsExpired": false
+  }
+}

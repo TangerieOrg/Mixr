@@ -49,6 +49,7 @@ interface TutProps {
 }
 
 export default function TutorialPopup(props : TutProps) {
+    return null;
     const [curSlide, setCurSlide] = useState<number>(0);
 
     if(CheckTutorialCookie(props.tutorialKey) || curSlide < 0) return null;

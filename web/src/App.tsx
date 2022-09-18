@@ -5,10 +5,7 @@ import env from "react-dotenv";
 
 import {
   BrowserRouter as Router,
-  Switch,
-  Link,
-  useHistory,
-  Route
+  Switch
 } from "react-router-dom";
 
 import Dashboard from './routes/Dashboard';
@@ -29,7 +26,6 @@ import { PrivateUser } from './models/Spotify';
 import MixPlaylists from './routes/MixPlaylists';
 import { MoonLoader } from 'react-spinners';
 import HelpPage from './routes/HelpPage';
-import SpotifyPicker from './components/SpotifyPicker';
 import ItemsAnalyzer from './routes/ItemsAnalyzer';
 
 function App() {

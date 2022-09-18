@@ -154,6 +154,7 @@ export default function Dashboard() {
                 <em className="block mt-4">Note: An item can be removed from the list by first hovering over the item then clicking the 'X' button on the right</em>
             </TutorialSlide>
         </TutorialPopup>
+        
         <div className="banner-gradient flex flex-col justify-center shadow-2xl" 
         style={{minHeight: "70vh", height: "30rem", overflowY: "hidden"}}>
             <div className="mx-auto text-center text-white font-light text-3xl flex flex-col">
@@ -164,8 +165,8 @@ export default function Dashboard() {
         </div>
         <div className="px-20 pt-10 pb-10">
             <h1 className="text-center text-3xl heading-sub mb-8">Mix Playlists</h1>
-            <div className="flex flex-row justify-between text-justify mb-20">
-                <div className="w-2/5">
+            <div className="text-justify mb-20 md:grid-cols-2 grid grid-cols-1 gap-4">
+                <div >
                     <div className="w-full p-10 bg-white shadow-2xl rounded-md flex flex-col justify-between border-2 border-gray-50">
                         <SpotifyPicker allowedTypes={["Playlist"]} allowMultiple={true} onChange={(data) => setMixPlaylists(data.map(x => (x.data as PlaylistInfo)))}/>
                         <button className="button-primary mt-3" disabled={mixPlaylists.length < 2} onClick={() => {
@@ -178,17 +179,17 @@ export default function Dashboard() {
                         </button>
                     </div>
                 </div>
-                <div className="w-2/5 flex flex-col justify-center">
+                <div className="flex flex-col justify-center">
                     <p className="text-lg text-justify">Add playlists to this list to create a mix from them. The algorithm will attempt to create a new playlist with songs from both that better matches the music taste of both. <em className="block mt-4">See the help page for how to add URIs</em></p>
                 </div>
             </div>
 
             <h1 className="text-center text-3xl heading-sub mb-8">Analyse/Compare Items</h1>
-            <div className="flex flex-row justify-between text-justify">
-                <div className="w-2/5 flex flex-col justify-center">
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-4 justify-between text-justify">
+                <div className="flex flex-col justify-center">
                     <p className="text-lg">Add playlists, users or tracks to this list to compare their attributes. An interactive graph will be created from these and you will be able to see the spatial relations of nodes. <em className="block mt-4">See the help page for how to add URIs</em></p>
                 </div>
-                <div className="w-2/5">
+                <div className="">
                     <div className="w-full p-10 bg-white shadow-2xl rounded-md flex flex-col justify-between border-2 border-gray-50">
                         <SpotifyPicker allowedTypes={["Playlist", "User", "Track"]} allowMultiple={true} onChange={(data) => setAnalyseItems(data)}/>
                         <button className="button-primary mt-3" disabled={analyseItems.length == 0} onClick={() => {

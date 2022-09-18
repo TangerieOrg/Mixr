@@ -82,10 +82,10 @@ export default function Landing(props : IProps) {
         <Link to="/help/general/account" className="block opacity-100 fixed bottom-10 right-10 z-50 bg-white pl-5 pr-5 text-center py-2 text-gray-700 rounded-full shadow-2xl text-xl font-light group hover:bg-gray-50 hover:opacity-95 transition duration-300 transform scale-100 hover:scale-95">
             <FontAwesomeIcon className="text-base my-auto" icon={["far", "question-circle"]} /> Help
         </Link>
-        <div className="banner-gradient flex flex-col justify-around shadow-2xl" 
+        <div className="banner-gradient flex flex-col md:pt-0 pt-20 justify-around shadow-2xl" 
         style={{overflowY: "hidden"}}>
             <div className="flex flex-row justify-between">
-                <div className="text-center flex flex-col justify-center w-1/2">
+                <div className="text-center flex flex-col justify-center w-full md:w-1/2">
                     <h1 className="text-9xl font-thin text-center tracking-widest text-white">Mixr</h1>
                     <h2 className="text-2xl font-light text-center text-white">Find <em>Your </em> 
                         <TextCarousel phrases={["Mix", "Tune", "Jam", "Vibe", "Mood", "Bop", "Melody", "Music", "Blend"]} 
@@ -93,7 +93,7 @@ export default function Landing(props : IProps) {
                         direction="down"/>
                     </h2> 
                 </div>
-                <div className="p-20 w-1/2 flex flex-col justify-center">
+                <div className="p-20 w-0 md:w-1/2 hidden md:flex flex-col justify-center">
                     <div className="p-2 bg-white w-10/12 rounded-xl">
                         <img className="rounded-lg" 
                         src={randomImage ? randomImage.url : ""} 
@@ -119,7 +119,7 @@ export default function Landing(props : IProps) {
         
         <div className="px-20 py-16 flex flex-col justify-between" style={{minHeight: "100vh"}}>
             <div className="flex flex-row justify-between" id="scrollTarget">
-                <div className="w-2/5">
+                <div className="w-full lg:w-2/5">
                     <h2 className="heading-sub">What is <em>Mixr</em>?</h2>
                     <div className="ml-1 body-text mt-2 text-justify"><p>
                     Mixr is a service that aims to unify peoples music tastes. By comparing track's features such as energy, positivity and more the music taste of many users or playlists can be combined to create an equally enjoyable listening experience.
@@ -131,7 +131,7 @@ export default function Landing(props : IProps) {
 
             <div className="flex flex-row justify-between">
                 <div></div>
-                <div className="w-2/5 text-right">
+                <div className="w-full lg:w-2/5 text-right">
                     <h2 className="heading-sub">How Does <em>Mixr</em> Work?</h2>
                     <div className="ml-1 body-text mt-2 text-justify">
                     <p>

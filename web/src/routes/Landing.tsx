@@ -143,7 +143,7 @@ export default function Landing(props : IProps) {
 
             <button className="button-primary mx-auto block mt-10 group" onClick={() => {
                 if(isLoggedIn) {
-                    history.push("/mixr/dashboard");
+                    history.push("/dashboard");
                 } else {
                     api.navigateToSpotifyLogin();
                 }

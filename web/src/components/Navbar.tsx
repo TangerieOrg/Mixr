@@ -49,7 +49,7 @@ export default function Navbar(props : IProps) {
                                     <li className="hover:text-brand-500 transition duration-200"><Link to="/">Home</Link></li>
                                     <li className="hover:text-brand-500 transition duration-200"><Link to="/dashboard">Dashboard</Link></li>
                                     <li className="hover:text-brand-500 transition duration-200"><Link to="/help/general/account">Help</Link></li>
-                                    <li className="hover:text-brand-500 transition duration-200"><a className="cursor-pointer" href="/" onClick={() => {
+                                    <li className="hover:text-brand-500 transition duration-200"><a className="cursor-pointer" href="/mixr" onClick={() => {
                                         //Remove the user token if they logout
                                         RevokeUserToken();
 

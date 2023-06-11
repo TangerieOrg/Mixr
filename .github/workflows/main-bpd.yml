@@ -10,14 +10,17 @@ jobs:
     name: Create Env
     runs-on: [self-hosted, builder]
     outputs:
-      SPOTIFY_CLIENT_ID: ${{ steps.id.outputs.SPOTIFY_CLIENT_ID }}
-      SPOTIFY_CLIENT_SECRET: ${{ steps.secret.outputs.SPOTIFY_CLIENT_SECRET }}
+      SPOTIFY_CLIENT_ID: ${{ steps.output.outputs.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ steps.output.outputs.SPOTIFY_CLIENT_SECRET }}
     steps:
-      - id: id
-        run: echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" >> "$GITHUB_OUTPUT"
-      - id: secret
-        run: echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" >> "$GITHUB_OUTPUT"
-        
+      - id: output
+        run: |
+          {
+            "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}"
+            "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}"
+          } >> $GITHUB_OUTPUT
+      - run: echo "${{steps.output.outputs.SPOTIFY_CLIENT_ID}}" "${{steps.output.outputs.SPOTIFY_CLIENT_SECRET}}"
+      - run: echo '--build-arg SPOTIFY_CLIENT_ID=${{ steps.output.outputs.SPOTIFY_CLIENT_ID }} --build-arg SPOTIFY_CLIENT_ID=${{ steps.output.outputs.SPOTIFY_CLIENT_SECRET }}'
   build-api:
     uses: TangerieOrg/Workflows/.github/workflows/docker-build-push.yml@main
     needs: create_env

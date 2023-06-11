@@ -1,0 +1,39 @@
+name: Production Build
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-api:
+    uses: TangerieOrg/Workflows/.github/workflows/docker-build-push.yml@main
+    with:
+      image_name: mixr-api
+      registry_name: docker.tangerie.xyz
+      ref: main
+      path: api
+      force_build: 'true'
+      build_args: --build-arg SPOTIFY_CLIENT_ID=${{secrets.SPOTIFY_CLIENT_ID}} --build-arg SPOTIFY_CLIENT_ID=${{secrets.SPOTIFY_CLIENT_SECRET}}
+    secrets: inherit
+
+  build-web:
+      uses: TangerieOrg/Workflows/.github/workflows/docker-build-push.yml@main
+      with:
+        image_name: mixr-web
+        registry_name: docker.tangerie.xyz
+        ref: main
+        path: web
+        force_build: 'true'
+        build_args: --build-arg REACT_APP_API_URL=/mixr/api --build-arg REACT_APP_BASE_URL=/mixr
+      secrets: inherit
+
+  deploy:
+    uses: TangerieOrg/Workflows/.github/workflows/docker-deploy.yml@main
+    needs: 
+      - build-api
+      - build-web
+    with:
+      image_name: mixr
+      registry_name: docker.tangerie.xyz
+    secrets: inherit

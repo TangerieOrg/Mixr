@@ -1,24 +1,36 @@
 version: '3'
 
 services:
-    api:
-        ports:
-            - 3001:80
-        environment:
-            - SPOTIFY_CALLBACK_URL=http://tangerie.xyz/mixr/spotify/callback
-            - SPOTIFY_CLIENT_ID
-            - SPOTIFY_CLIENT_SECRET
-        build: ./api
-        volumes:
-            - ./api/Data:/app/Data
+  api:
+    # ports:
+    #   - 3001:80
+    image: ${IMAGE_NAME}-api:latest
+    environment:
+      - SPOTIFY_CALLBACK_URL=http://tangerie.xyz/mixr/spotify/callback
+    volumes:
+      - ./api/Data:/app/Data
+    deploy:
+      replicas: 1
+      labels:
+        xyz.tangerie.reverse_proxy.path: "/mixr/api"
+        xyz.tangerie.reverse_proxy.port: "80"
+    networks:
+      - nginx-proxy-overlay
 
-    frontend:
-        ports:
-            - 3000:3000
-        depends_on:
-            - api
-        build: 
-            context: ./web
-            args:
-                - REACT_APP_API_URL=/mixr/api
-                - REACT_APP_BASE_URL=/mixr
+  web:
+    # ports:
+    #   - 3000:3000 
+    image: ${IMAGE_NAME}-web:latest
+    depends_on:
+      - api
+    deploy:
+      replicas: 1
+      labels:
+        xyz.tangerie.reverse_proxy.path: "/mixr"
+        xyz.tangerie.reverse_proxy.port: "3000"
+    networks:
+      - nginx-proxy-overlay
+
+networks:
+  nginx-proxy-overlay:
+    driver: overlay

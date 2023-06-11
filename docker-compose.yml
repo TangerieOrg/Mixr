@@ -34,3 +34,4 @@ services:
 networks:
   nginx-proxy-overlay:
     driver: overlay
+    external: true

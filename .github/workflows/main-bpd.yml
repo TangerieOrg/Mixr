@@ -6,15 +6,28 @@ on:
   workflow_dispatch:
 
 jobs:
+  create_env:
+    name: Create Env
+    runs-on: [self-hosted, builder]
+    outputs:
+      SPOTIFY_CLIENT_ID: ${{ steps.id.outputs.SPOTIFY_CLIENT_ID }}
+      SPOTIFY_CLIENT_SECRET: ${{ steps.secret.outputs.SPOTIFY_CLIENT_SECRET }}
+    steps:
+      - id: id
+        run: echo "SPOTIFY_CLIENT_ID=${{ secrets.SPOTIFY_CLIENT_ID }}" >> "$GITHUB_OUTPUT"
+      - id: secret
+        run: echo "SPOTIFY_CLIENT_SECRET=${{ secrets.SPOTIFY_CLIENT_SECRET }}" >> "$GITHUB_OUTPUT"
+        
   build-api:
     uses: TangerieOrg/Workflows/.github/workflows/docker-build-push.yml@main
+    needs: create_env
     with:
       image_name: mixr-api
       registry_name: docker.tangerie.xyz
       ref: main
       path: api
       force_build: 'true'
-      build_args: --build-arg SPOTIFY_CLIENT_ID=${{secrets.SPOTIFY_CLIENT_ID}} --build-arg SPOTIFY_CLIENT_ID=${{secrets.SPOTIFY_CLIENT_SECRET}}
+      build_args: '--build-arg SPOTIFY_CLIENT_ID=${{ needs.create_env.outputs.SPOTIFY_CLIENT_ID }} --build-arg SPOTIFY_CLIENT_ID=${{ needs.create_env.outputs.SPOTIFY_CLIENT_SECRET }}'
     secrets: inherit
 
   build-web:

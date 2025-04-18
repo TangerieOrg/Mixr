@@ -2,9 +2,7 @@ version: '3'
 
 services:
   api:
-    # ports:
-    #   - 3001:80
-    image: ${IMAGE_NAME}-api:latest
+    image: ${IMAGE_NAME}/api:latest
     environment:
       - SPOTIFY_CALLBACK_URL=https://tangerie.xyz/mixr/spotify/callback
     volumes:
@@ -18,9 +16,7 @@ services:
       - nginx-proxy-overlay
 
   web:
-    # ports:
-    #   - 3000:3000 
-    image: ${IMAGE_NAME}-web:latest
+    image: ${IMAGE_NAME}/web:latest
     depends_on:
       - api
     deploy:

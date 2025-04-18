@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  ARCH_LIST: linux/arm64/v8,linux/amd64
+  ARCH_LIST: linux/amd64
   CURRENT_TAG: ${{ github.sha }}
 
 jobs:
@@ -45,8 +45,8 @@ jobs:
           docker buildx build 
           --push
           --platform ${{env.ARCH_LIST}}
-          -t docker.tangerie.xyz/mixr-api:${{env.CURRENT_TAG}}
-          -t docker.tangerie.xyz/mixr-api:latest
+          -t docker.tangerie.xyz/mixr/api:${{env.CURRENT_TAG}}
+          -t docker.tangerie.xyz/mixr/api:latest
           --build-arg SPOTIFY_CLIENT_ID=${{secrets.SPOTIFY_CLIENT_ID}}
           --build-arg SPOTIFY_CLIENT_SECRET=${{secrets.SPOTIFY_CLIENT_SECRET}}
           api
@@ -86,8 +86,8 @@ jobs:
           docker buildx build 
           --push
           --platform ${{env.ARCH_LIST}}
-          -t docker.tangerie.xyz/mixr-web:${{env.CURRENT_TAG}}
-          -t docker.tangerie.xyz/mixr-web:latest
+          -t docker.tangerie.xyz/mixr/web:${{env.CURRENT_TAG}}
+          -t docker.tangerie.xyz/mixr/web:latest
           --build-arg REACT_APP_API_URL=/mixr/api
           --build-arg REACT_APP_BASE_URL=/mixr
           web

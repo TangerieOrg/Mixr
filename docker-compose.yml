@@ -5,6 +5,8 @@ services:
     image: ${IMAGE_NAME}/api:latest
     environment:
       - SPOTIFY_CALLBACK_URL=https://tangerie.xyz/mixr/spotify/callback
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
+      - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_SECRET}
     volumes:
       - ./api/Data:/app/Data
     deploy:
